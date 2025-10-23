@@ -15,5 +15,7 @@ module rom #(
     always_ff @(posedge clk) begin
         dout<= rom_array[addr];
     end
+
+    
     
 endmodule
