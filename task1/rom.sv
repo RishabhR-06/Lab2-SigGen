@@ -1,14 +1,14 @@
 module rom #(
     parameter ADDRESS_WIDTH = 8,
-    parameter DATA_WIDTH = 8,
+    parameter DATA_WIDTH = 8
 )(
     input logic clk,
-    input logic[ADDRESS_WIDTH] addr,
-    output logic[DATA_WIDTH] dout
+    input logic[ADDRESS_WIDTH-1:0] addr,
+    output logic[DATA_WIDTH-1:0] dout
 );
     logic[DATA_WIDTH-1:0] rom_array [2**ADDRESS_WIDTH-1:0];
     initial begin
-        $$display("loading.rom");
+        $display("loading.rom");
         $readmemh("sinerom.mem",rom_array);
     end
 
@@ -16,6 +16,6 @@ module rom #(
         dout<= rom_array[addr];
     end
 
-    
+
     
 endmodule
