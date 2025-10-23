@@ -1,4 +1,4 @@
-counter_tb.o: ../counter_tb.cpp Vcounter.h \
+sinegen_tb.o: ../sinegen_tb.cpp \
  /usr/local/share/verilator/include/verilated.h \
  /usr/local/share/verilator/include/verilatedos.h \
  /usr/local/share/verilator/include/verilated_config.h \
@@ -7,4 +7,5 @@ counter_tb.o: ../counter_tb.cpp Vcounter.h \
  /usr/local/share/verilator/include/verilated_vcd_c.h \
  /usr/local/share/verilator/include/verilated.h \
  /usr/local/share/verilator/include/verilated_trace.h \
- /usr/local/share/verilator/include/verilated_trace_defs.h ../vbuddy.cpp
+ /usr/local/share/verilator/include/verilated_trace_defs.h Vsinegen.h \
+ ../vbuddy.cpp

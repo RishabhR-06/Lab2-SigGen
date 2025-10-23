@@ -5,19 +5,20 @@
 // The class here is then constructed to instantiate the design.
 // See the Verilator manual for examples.
 
-#ifndef VERILATED_VCOUNTER_H_
-#define VERILATED_VCOUNTER_H_  // guard
+#ifndef VERILATED_VSINEGEN_H_
+#define VERILATED_VSINEGEN_H_  // guard
 
 #include "verilated.h"
 
-class Vcounter__Syms;
-class Vcounter___024root;
+class Vsinegen__Syms;
+class Vsinegen___024root;
+class VerilatedVcdC;
 
 // This class is the main interface to the Verilated model
-class Vcounter VL_NOT_FINAL : public VerilatedModel {
+class Vsinegen VL_NOT_FINAL : public VerilatedModel {
   private:
     // Symbol table holding complete model state (owned by this class)
-    Vcounter__Syms* const vlSymsp;
+    Vsinegen__Syms* const vlSymsp;
 
   public:
 
@@ -28,7 +29,7 @@ class Vcounter VL_NOT_FINAL : public VerilatedModel {
     VL_IN8(&rst,0,0);
     VL_IN8(&en,0,0);
     VL_IN8(&incr,7,0);
-    VL_OUT8(&count,7,0);
+    VL_OUT8(&dout,7,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
@@ -36,19 +37,19 @@ class Vcounter VL_NOT_FINAL : public VerilatedModel {
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.
-    Vcounter___024root* const rootp;
+    Vsinegen___024root* const rootp;
 
     // CONSTRUCTORS
     /// Construct the model; called by application code
     /// If contextp is null, then the model will use the default global context
     /// If name is "", then makes a wrapper with a
     /// single model invisible with respect to DPI scope names.
-    explicit Vcounter(VerilatedContext* contextp, const char* name = "TOP");
-    explicit Vcounter(const char* name = "TOP");
+    explicit Vsinegen(VerilatedContext* contextp, const char* name = "TOP");
+    explicit Vsinegen(const char* name = "TOP");
     /// Destroy the model; called (often implicitly) by application code
-    virtual ~Vcounter();
+    virtual ~Vsinegen();
   private:
-    VL_UNCOPYABLE(Vcounter);  ///< Copying not allowed
+    VL_UNCOPYABLE(Vsinegen);  ///< Copying not allowed
 
   public:
     // API METHODS
@@ -61,6 +62,8 @@ class Vcounter VL_NOT_FINAL : public VerilatedModel {
     void eval_end_step() {}
     /// Simulation complete, run final blocks.  Application must call on completion.
     void final();
+    /// Trace signals in the model; called by application code
+    void trace(VerilatedVcdC* tfp, int levels, int options = 0);
     /// Retrieve name of this model instance (as passed to constructor).
     const char* name() const;
 
@@ -68,6 +71,7 @@ class Vcounter VL_NOT_FINAL : public VerilatedModel {
     const char* hierName() const override final;
     const char* modelName() const override final;
     unsigned threads() const override final;
+    std::unique_ptr<VerilatedTraceConfig> traceConfig() const override final;
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
 
 #endif  // guard

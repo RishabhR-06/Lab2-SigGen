@@ -7,6 +7,7 @@ module rom #(
     output logic[DATA_WIDTH-1:0] dout
 );
     logic[DATA_WIDTH-1:0] rom_array [2**ADDRESS_WIDTH-1:0];
+    
     initial begin
         $display("loading.rom");
         $readmemh("sinerom.mem",rom_array);

@@ -1,6 +1,6 @@
 module sinegen #(
     parameter A_WIDTH =8,
-    parameter D_WIDTH =8,
+    parameter D_WIDTH =8
 )(
     input logic clk,
     input logic rst,
@@ -9,6 +9,7 @@ module sinegen #(
     output logic[D_WIDTH-1:0] dout
 );
     logic [A_WIDTH-1:0] address;
+
     counter addrcounter (
         .clk(clk),
         .rst(rst),
